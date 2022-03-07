@@ -11,6 +11,9 @@ public interface CodeService {
 	
 	public Code selectOne(CodeVo vo) throws Exception;
 
+	public int update(Code dto) throws Exception;
 
-
+	public List<Code> selectCodeList() throws Exception;
+	
+	public int codeInsert(Code dto) throws Exception;
 }

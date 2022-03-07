@@ -6,15 +6,15 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 <c:choose>
-	<c:when test="${fn:length(list) eq 0}">
+	<c:when test="${fn:length(codeList) eq 0}">
 		<tr>
 			<td class="text-center" colspan="9">There is no data!</td>
 		</tr>	
 	</c:when>
 	<c:otherwise>
-		<c:forEach items="${list}" var="item" varStatus="status">	
+		<c:forEach items="${codeList}" var="item" varStatus="status">	
 		
-		<c:out value="${item.ifcgSeq}"/> |<a href="/infra/code/codeGroupView?ifcgSeq=${item.ifcgSeq}"><c:out value="${item.ifcgName}"/></a> | <c:out value="${item.ifcgDelNy}"/> <br>
+		<c:out value="${item.ifcdSeq}"/> |<c:out value="${item.ifcdName}"/> | <c:out value="${item.ifcdDelNy}"/> <br>
 		
 		</c:forEach>
 	</c:otherwise>

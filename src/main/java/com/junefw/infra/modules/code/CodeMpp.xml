@@ -37,6 +37,38 @@
 			FROM 
 				nct.infrCodeGroup a
 			WHERE 1=1
-				AND ifcgSeq= 0
+				AND ifcgSeq= #{ifcgSeq}
 	</select>
+	
+	<update id="update">
+			UPDATE nct.infrCodeGroup SET 
+				ifcgName = #{ifcgName}
+			WHERE 1=1
+				AND ifcgSeq= #{ifcgSeq}
+	</update>
+	
+	
+	<select id="selectCodeList" resultMap="resultMapObj">
+			SELECT 
+				a.ifcdSeq
+				, a.ifcdName
+				, a.ifcdDelNy
+			FROM 
+				nct.infrCode a
+			WHERE 1=1
+				AND ifcdDelNy = 0
+	</select>
+	
+	<insert id="codeInsert">
+			insert into infrCode(
+					
+				  ifcdName
+				, ifcdDelNy		
+			)values(
+				#{ifcdName}
+				,0
+			)
+	</insert>
+
+	
 </mapper>
