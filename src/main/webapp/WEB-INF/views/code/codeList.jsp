@@ -14,7 +14,7 @@
 	<c:otherwise>
 		<c:forEach items="${codeList}" var="item" varStatus="status">	
 		
-		<c:out value="${item.ifcdSeq}"/> |<c:out value="${item.ifcdName}"/> | <c:out value="${item.ifcdDelNy}"/> <br>
+		<c:out value="${item.ifcdSeq}"/> |<a href="/infra/code/codeView?ifcdSeq=${item.ifcdSeq}"><c:out value="${item.ifcdName}"/></a> | <c:out value="${item.ifcdDelNy}"/> <br>
 		
 		</c:forEach>
 	</c:otherwise>

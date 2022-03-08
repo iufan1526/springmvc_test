@@ -5,5 +5,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
-<c:out value="${rt.ifcdSeq}"/> | <c:out value="${rt.ifcgName}"/> | <c:out value="${rt.ifcgDelNy}"/> <br>
-<a href="/infra/code/codeGroupForm2?ifcgSeq=${rt.ifcgSeq}">수정</a>
+<c:out value="${rt.ifcdSeq}"/> | <c:out value="${rt.ifcdName}"/> | <c:out value="${rt.ifcdDelNy}"/>| <c:out value="${rt.infrCodeGroup_ifcgSeq}"/> <br>
+<a href="/infra/code/codeForm2?ifcdSeq=${rt.ifcdSeq}">수정</a>
+<a href="/infra/code/codeForm">등록</a>

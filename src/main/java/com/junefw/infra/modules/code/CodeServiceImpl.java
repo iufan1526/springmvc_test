@@ -5,14 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.junefw.infra.modules.member.Member;
 
 @Service
 public class CodeServiceImpl implements CodeService{
 
 	@Autowired
 	CodeDao dao;
-
+	
+//	infrCodeGroup
 	@Override
 	public List<Code> selectList() throws Exception {
 		return dao.selectList();
@@ -32,6 +32,9 @@ public class CodeServiceImpl implements CodeService{
 	public int update(Code dto) throws Exception {
 		return dao.update(dto);
 	}
+	
+	
+//	infrCode
 
 	@Override
 	public List<Code> selectCodeList() throws Exception {
@@ -41,6 +44,16 @@ public class CodeServiceImpl implements CodeService{
 	@Override
 	public int codeInsert(Code dto) throws Exception {
 		return dao.codeInsert(dto);
+	}
+
+	@Override
+	public Code selectOneCode(CodeVo vo) throws Exception {
+		return dao.selectOneCode(vo);
+	}
+
+	@Override
+	public int updateCode(Code dto) throws Exception {
+		return dao.updateCode(dto);
 	}
 	
 	
