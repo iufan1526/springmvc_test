@@ -3,7 +3,7 @@ package com.junefw.infra.modules.code;
 public class CodeVo {
 	
 	
-	private String ifcgSeq;
+	private Integer ifcgSeq;
 	private String ifcgName;
 	
 	private String ifcdSeq;
@@ -12,10 +12,10 @@ public class CodeVo {
 	private Integer ifcdDelNy;
 	
 	
-	public String getIfcgSeq() {
+	public Integer getIfcgSeq() {
 		return ifcgSeq;
 	}
-	public void setIfcgSeq(String ifcgSeq) {
+	public void setIfcgSeq(Integer ifcgSeq) {
 		this.ifcgSeq = ifcgSeq;
 	}
 	public String getIfcgName() {

@@ -106,10 +106,11 @@ public class CodeController {
 	
 	@RequestMapping(value = "/code/codeInst")
 	public String codeInst(Code dto) throws Exception{
-	
+		
+		
 		service.codeInsert(dto);
 		
-		return "";
+		return "redirect:/code/codeList";
 	}
 	
 	@RequestMapping(value = "/code/codeView")
@@ -140,6 +141,30 @@ public class CodeController {
 		
 		service.updateCode(dto);
 		
-		return "";
+		return "redirect:/code/codeView?ifcdSeq=" + dto.getIfcdSeq();
 	}
+	
+	
+	
+	@RequestMapping(value = "/code/memberList")
+	public String memberList(Model model) throws Exception {
+		
+		
+		return "code/memberList";
+	}
+	
+	@RequestMapping(value = "/code/memberForm")
+	public String memberForm(Model model) throws Exception {
+		
+		
+		return "code/memberForm";
+	}
+	
+	@RequestMapping(value = "/code/memberView")
+	public String memberView(Model model) throws Exception {
+		
+		
+		return "code/memberView";
+	}
+	
 }

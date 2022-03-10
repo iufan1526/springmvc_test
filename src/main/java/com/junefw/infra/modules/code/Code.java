@@ -3,7 +3,7 @@ package com.junefw.infra.modules.code;
 public class Code {
 	
 // DTO	
-	private String ifcgSeq;
+	private Integer ifcgSeq;
 	private String ifcgName;
 	private Integer ifcgDelNy;
 	
@@ -15,10 +15,10 @@ public class Code {
 	
 	
 	
-	public String getIfcgSeq() {
+	public Integer getIfcgSeq() {
 		return ifcgSeq;
 	}
-	public void setIfcgSeq(String ifcgSeq) {
+	public void setIfcgSeq(Integer ifcgSeq) {
 		this.ifcgSeq = ifcgSeq;
 	}
 	public String getIfcgName() {

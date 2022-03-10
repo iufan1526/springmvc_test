@@ -7,13 +7,12 @@
 
 
 <form method="post" action="/infra/code/codeInst">
-	<select name="ifcgSeq">
+	<select name="infrCodeGroup_ifcgSeq">
 		<c:forEach items="${list}" var="item" varStatus="status">	
-		<option value="<c:out value="${item.ifcgSeq}"/><c:out value="${item.ifcgName}"/>"><c:out value="${item.ifcgSeq}"/><c:out value="${item.ifcgName}"/></option>
+		<option value="<c:out value="${item.ifcgSeq}"/>"><c:out value="${item.ifcgName}"/></option>
 		</c:forEach>
 	</select>
 	
 	<input type="text" name="ifcdName" placeholder="이름" value="">
-	<!-- <input type="text" name="infrCodeGroup_ifcgSeq" placeholder="seq" value=""> -->
 	<input type="submit" value="입력">
 </form>
