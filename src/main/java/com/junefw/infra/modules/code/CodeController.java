@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.junefw.infra.modules.member.Member;
@@ -12,18 +13,38 @@ import com.junefw.infra.modules.member.Member;
 @Controller
 
 public class CodeController {
+	
+
 
 	@Autowired
 	CodeServiceImpl service;
-
+	
+	
 	@RequestMapping(value = "/code/codeGroupList")
-	public String CodeGroupList(Model model) throws Exception {
+	public String codeGroupList(@ModelAttribute("vo")CodeVo vo, Model model) throws Exception {
 		
-		List<Code> list = service.selectList();
+		//Count 가져오는 쿼리
+		
+		int sum = service.selectOneCount(vo);
+		
+		vo.setParamsPaging(sum);
+		
+		//count 가0이아니면 lis 가져오는부분수후 모델에담
 		
 		
-		model.addAttribute("list", list);
+		if(sum != 0) {
 		
+			List<Code> list = service.selectList(vo);
+			
+			model.addAttribute("list", list);
+		}else {
+			System.out.println("값이없습니다");
+		
+		}
+//		
+//		List<Code> list = service.selectList(vo);
+//		model.addAttribute("list", list);
+//		
 		return "code/codeGroupList";
 		
 		
@@ -85,19 +106,25 @@ public class CodeController {
 // ------------------------------------
 // code
 	@RequestMapping(value = "/code/codeList")
-	public String CodeList(Model model) throws Exception {
+	public String CodeList(CodeVo vo , Model model) throws Exception {
 		
-		List<Code> codeList = service.selectCodeList();
-		
+		List<Code> codeList = service.selectCodeList(vo);
 		model.addAttribute("codeList", codeList);
+		
+		
+		
+		List<Code> list = service.selectList(vo);
+		model.addAttribute("list", list);
+		
+		
 		
 		return "code/codeList";
 	}
 	
 	@RequestMapping(value = "/code/codeForm")
-	public String codeForm(Model model) throws Exception{
+	public String codeForm(CodeVo vo, Model model) throws Exception{
 		
-		List<Code> list = service.selectList();
+		List<Code> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		
 		return "/code/codeForm";
@@ -146,25 +173,25 @@ public class CodeController {
 	
 	
 	
-	@RequestMapping(value = "/code/memberList")
+	@RequestMapping(value = "/member/memberList")
 	public String memberList(Model model) throws Exception {
 		
 		
-		return "code/memberList";
+		return "member/memberList";
 	}
 	
-	@RequestMapping(value = "/code/memberForm")
+	@RequestMapping(value = "/member/memberForm")
 	public String memberForm(Model model) throws Exception {
 		
 		
-		return "code/memberForm";
+		return "member/memberForm";
 	}
 	
-	@RequestMapping(value = "/code/memberView")
+	@RequestMapping(value = "/member/memberView")
 	public String memberView(Model model) throws Exception {
 		
 		
-		return "code/memberView";
+		return "member/memberView";
 	}
 	
 }

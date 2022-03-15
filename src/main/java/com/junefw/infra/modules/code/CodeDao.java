@@ -18,8 +18,9 @@ public class CodeDao {
 	
 //	infrCodeGroup
 	
+	public int selectOneCount(CodeVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
 
-	public List<Code> selectList(){return sqlSession.selectList(namespace+ ".selectList","");}
+	public List<Code> selectList(CodeVo vo){return sqlSession.selectList(namespace+ ".selectList",vo);}
 	
 	public int insert(Code dto) {return sqlSession.insert(namespace+".insert", dto);}
 	
@@ -29,7 +30,7 @@ public class CodeDao {
 	
 // infrCode
 	
-	public List<Code> selectCodeList(){ return sqlSession.selectList(namespace+ ".selectCodeList","");}
+	public List<Code> selectCodeList(CodeVo vo){ return sqlSession.selectList(namespace+ ".selectCodeList",vo);}
 	
 	public int codeInsert(Code dto) {return sqlSession.insert(namespace+".codeInsert", dto);}
 	

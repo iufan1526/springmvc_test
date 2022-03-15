@@ -7,7 +7,9 @@ public interface CodeService {
 	
 	
 // infrCodeGroup	
-	public List<Code> selectList() throws Exception; 
+	public int selectOneCount(CodeVo vo) throws Exception;
+	
+	public List<Code> selectList(CodeVo vo) throws Exception; 
 	
 	public int insert(Code dto) throws Exception;
 	
@@ -17,7 +19,7 @@ public interface CodeService {
 	
 	
 //	infrCode
-	public List<Code> selectCodeList() throws Exception;
+	public List<Code> selectCodeList(CodeVo vo) throws Exception;
 	
 	public int codeInsert(Code dto) throws Exception;
 	

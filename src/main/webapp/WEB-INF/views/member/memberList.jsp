@@ -100,7 +100,7 @@
 						<tr>
 							<th scope="row"><input type="checkbox"></th>
 							<td scope="col">1</td>
-							<td scope="col"><a href="/infra/code/memberView">iufan1526</a></td>
+							<td scope="col"><a href="/infra/member/memberView">iufan1526</a></td>
 							<td scope="col">일반등급</td>
 							<td scope="col">정상</td>
 							<td scope="col">3</td>
@@ -201,7 +201,7 @@
 						</nav>
 					</div>
 					<div class="d-grid gap-2 d-md-block">
-						<button class="btn btn-primary" type="button"><a href="/infra/code/memberForm">등록</a></button>
+						<button class="btn btn-primary" type="button"><a href="/infra/member/memberForm">등록</a></button>
 						<button class="btn btn-primary" type="button">abs</button>
 					</div>
 				</div>

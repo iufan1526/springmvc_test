@@ -108,8 +108,8 @@
       </tbody>
     </table>
     <div class="main_botton">
-      <button type="button" class="btn btn-success">수정</button>
-      <button type="button" class="btn btn-danger">취소</button>
+      <button type="button" class="btn btn-success"><a href="/infra/member/memberList">수정</a></button>
+      <button type="button" class="btn btn-danger"><a href="/infra/member/memberList">취소</a></button>
     </div>
   </main>
 </body>

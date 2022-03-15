@@ -5,13 +5,13 @@ public class Code {
 // DTO	
 	private Integer ifcgSeq;
 	private String ifcgName;
+	private String ifcgNameEng;
 	private Integer ifcgDelNy;
 	
 	private String ifcdSeq;
 	private String ifcdName;
 	private Integer ifcdDelNy;
 	private Integer infrCodeGroup_ifcgSeq;
-	
 	
 	
 	
@@ -27,14 +27,18 @@ public class Code {
 	public void setIfcgName(String ifcgName) {
 		this.ifcgName = ifcgName;
 	}
+	public String getIfcgNameEng() {
+		return ifcgNameEng;
+	}
+	public void setIfcgNameEng(String ifcgNameEng) {
+		this.ifcgNameEng = ifcgNameEng;
+	}
 	public Integer getIfcgDelNy() {
 		return ifcgDelNy;
 	}
 	public void setIfcgDelNy(Integer ifcgDelNy) {
 		this.ifcgDelNy = ifcgDelNy;
 	}
-	
-	
 	public String getIfcdSeq() {
 		return ifcdSeq;
 	}
@@ -59,6 +63,7 @@ public class Code {
 	public void setInfrCodeGroup_ifcgSeq(Integer infrCodeGroup_ifcgSeq) {
 		this.infrCodeGroup_ifcgSeq = infrCodeGroup_ifcgSeq;
 	}
+	
 	
 	
 	

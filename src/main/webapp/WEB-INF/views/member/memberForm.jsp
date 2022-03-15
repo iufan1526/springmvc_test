@@ -141,8 +141,8 @@
           </select>
         </div>
         <div class="main_botton">
-          <button type="button" class="btn btn-success">등록</button>
-          <button type="button" class="btn btn-danger">취소</button>
+          <button type="button" class="btn btn-success"><a href="/infra/member/memberList">등록</a></button>
+          <button type="button" class="btn btn-danger"><a href="/infra/member/memberList">취소</a></button>
         </div>
       </div>
     </div>

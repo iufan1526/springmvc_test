@@ -7,18 +7,62 @@
 <mapper namespace="com.junefw.infra.modules.code.CodeMpp">
 
     <resultMap id="resultMapObj" type="com.junefw.infra.modules.code.Code"></resultMap>
-
+    
+    <sql id="selectCommon">
+    		FROM 
+				nct.infrCodeGroup a
+			WHERE 1=1
+				<choose>
+					<when test="shIfcgDelNy == 1">AND ifcgDelNy = 1</when>
+					<when test="shIfcgDelNy == 0">AND ifcgDelNy = 0</when>
+				</choose>
+				<choose>
+					<when test="shOption == 1">AND ifcgName  LIKE concat('%', #{shValue} ,'%')</when>
+					<when test="shOption == 2">AND ifcgNameEng  LIKE concat('%', #{shValue} ,'%')</when>
+				</choose>
+				<if test="shIfcgName != null and !shIfcgName.equals('')">AND ifcgName LIKE concat('%', #{shIfcgName} ,'%')</if>
+    	
+    </sql>
+    
+	<!-- <include refid="selectCommon"> -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	<!-- infraCodeGroup -->
 	<select id="selectList" resultMap="resultMapObj">
 			SELECT 
 				a.ifcgSeq
 				, a.ifcgName
-			FROM 
-				nct.infrCodeGroup a
-			WHERE 1=1
-				AND ifcgDelNy = 0
+				, a.ifcgDelNy
+				, a.ifcgNameEng
+		<include refid="selectCommon"/>
+		limit #{startRnumForMysql},#{rowNumToShow}
+		
 	</select>
 	
+	<select id="selectOneCount" resultType="Integer">
+			SELECT count(*)
+				FROM 
+				nct.infrCodeGroup a
+			WHERE 1=1
+				<choose>
+					<when test="shIfcgDelNy == 1">AND ifcgDelNy = 1</when>
+					<when test="shIfcgDelNy == 0">AND ifcgDelNy = 0</when>
+				</choose>
+				<choose>
+					<when test="shOption == 1">AND ifcgName  LIKE concat('%', #{shValue} ,'%')</when>
+					<when test="shOption == 2">AND ifcgNameEng  LIKE concat('%', #{shValue} ,'%')</when>
+				</choose>
+				<if test="shIfcgName != null and !shIfcgName.equals('')">AND ifcgName LIKE concat('%', #{shIfcgName} ,'%')</if>
+	</select>
 	
 	<insert id="insert">
 			insert into infrCodeGroup(
@@ -49,6 +93,10 @@
 	</update>
 	
 	<!-- infrCode -->
+	
+	
+	
+	
 	<select id="selectCodeList" resultMap="resultMapObj">
 			SELECT 
 				a.ifcdSeq
@@ -58,6 +106,7 @@
 				nct.infrCode a
 			WHERE 1=1
 				AND ifcdDelNy = 0
+				<if test="shIfcgSeq != null and !shIfcgSeq.equals('')">AND infrCodeGroup_ifcgSeq = #{shIfcgSeq} </if>
 	</select>
 	
 	<insert id="codeInsert">
@@ -91,6 +140,9 @@
 			WHERE 1=1
 				AND ifcdSeq= #{ifcdSeq}
 	</update>
+	
+	
+	
 
 	
 </mapper>
