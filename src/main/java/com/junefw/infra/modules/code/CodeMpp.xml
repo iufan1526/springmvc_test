@@ -97,6 +97,15 @@
 	
 	
 	
+	<select id="selectCodeListCount" resultType="Integer">
+			SELECT 
+				count(*)
+			FROM 
+				nct.infrCode a
+			WHERE 1=1
+				AND ifcdDelNy = 0
+				<if test="shIfcgSeq != null and !shIfcgSeq.equals('')">AND infrCodeGroup_ifcgSeq = #{shIfcgSeq} </if>
+	</select>
 	<select id="selectCodeList" resultMap="resultMapObj">
 			SELECT 
 				a.ifcdSeq
