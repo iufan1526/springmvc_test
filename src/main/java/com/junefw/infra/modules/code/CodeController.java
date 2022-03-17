@@ -106,18 +106,24 @@ public class CodeController {
 // ------------------------------------
 // code
 	@RequestMapping(value = "/code/codeList")
-	public String CodeList(CodeVo vo , Model model) throws Exception {
+	public String CodeList(@ModelAttribute("vo")CodeVo vo , Model model) throws Exception {
 		
-		List<Code> codeList = service.selectCodeList(vo);
-		model.addAttribute("codeList", codeList);
+		int rt = service.selectCodeListCount(vo);
+		vo.setParamsPaging(rt);
 		
+		if(rt != 0) {
 		
+			List<Code> codeList = service.selectCodeList(vo);
+			model.addAttribute("codeList", codeList);
+			
+			List<Code> list = service.selectList(vo);
+			model.addAttribute("list", list);
+			
+		}else {
+			System.out.println("값이없습니다");
 		
-		List<Code> list = service.selectList(vo);
-		model.addAttribute("list", list);
-		
-		
-		
+		}
+	
 		return "code/codeList";
 	}
 	

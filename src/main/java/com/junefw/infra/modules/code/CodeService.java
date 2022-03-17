@@ -19,6 +19,8 @@ public interface CodeService {
 	
 	
 //	infrCode
+	public int selectCodeListCount(CodeVo vo) throws Exception;
+	
 	public List<Code> selectCodeList(CodeVo vo) throws Exception;
 	
 	public int codeInsert(Code dto) throws Exception;

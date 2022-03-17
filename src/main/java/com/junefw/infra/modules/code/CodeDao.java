@@ -29,6 +29,7 @@ public class CodeDao {
 	public int update(Code dto) {return sqlSession.update(namespace+".update", dto);}
 	
 // infrCode
+	public int selectCodeListCount(CodeVo vo) {return sqlSession.selectOne(namespace + ".selectCodeListCount", vo);}
 	
 	public List<Code> selectCodeList(CodeVo vo){ return sqlSession.selectList(namespace+ ".selectCodeList",vo);}
 	

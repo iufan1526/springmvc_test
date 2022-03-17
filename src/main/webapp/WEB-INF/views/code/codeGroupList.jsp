@@ -8,22 +8,21 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <form name="" id="" method="get" action="/infra/code/codeGroupList">
 
-
-<select name="shIfcgDelNy">
+<select name="shIfcgDelNy" id="shIfcgDelNy">
 	<option value="">삭제여부
 	<option value="1">Y
 	<option value="0">N
 </select>
 
-이름:<input type="text" name="shIfcgName"> 
-<input type="submit" name="search">
+이름:<input type="text" name="shIfcgName" id="shIfcgName"> 
+<input type="submit" name="search" id="btnSubmit">
 ||
-<select name="shOption">
+<select name="shOption" id="shOption">
 	<option value="">검색어
 	<option value="1">한글
 	<option value="2">영어
 </select>
-<input type="text" name="shValue"><br>
+<input type="text" name="shValue" id="shValue"><br>
 
 
 	<c:choose>
@@ -41,7 +40,7 @@
 		</c:otherwise>
 	</c:choose>	
 	
-</form> 
+
 
 <nav aria-label="...">
   <ul class="pagination">
@@ -63,3 +62,18 @@
 </c:if>  
   </ul>
 </nav>
+
+</form> 
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/infra/resources/js/validtion.js"></script>
+
+<script type="text/javascript">
+	$("#btnSubmit").on("click",function(){
+		
+	
+		if(!checkNull($("#shIfcgName"), $("#shIfcgName").val(), "오류")) return false;
+	
+	});
+</script>
