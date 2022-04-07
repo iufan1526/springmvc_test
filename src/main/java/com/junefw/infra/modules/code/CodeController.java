@@ -1,7 +1,9 @@
 
 package com.junefw.infra.modules.code;
 
+import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
@@ -64,8 +67,16 @@ public class CodeController {
 	@RequestMapping(value = "/code/codeGroupInst")
 	public String codeGroupInst(Code dto ,CodeVo vo,RedirectAttributes redirectAttributes) throws Exception {
 		
-
+		
+		MultipartFile multipartFile = dto.getFile();
+		String fileName = multipartFile.getOriginalFilename();
+		String ext =fileName.substring(fileName.lastIndexOf(".")+ 1);
+		String uuid = UUID.randomUUID().toString();
+		String uuidFileName = uuid + "." + ext;
+		multipartFile.transferTo(new File("/Users/admin/Desktop/Fectory/ws_sts3/springmvc_test/src/main/webapp/resources/"+ uuidFileName));
 		// 입력을 작동시킨다.
+		dto.setOriginalFileName(fileName);
+		dto.setUuidFileName(uuidFileName);
 		service.insert(dto);
 		
 		redirectAttributes.addAttribute("ifcgSeq", dto.getIfcgSeq());

@@ -50,6 +50,11 @@ public class CodeServiceImpl implements CodeService{
 		return dao.updateDelete(vo);
 	}
 	
+	@Override
+	public int insertFile(Code dto) throws Exception {
+		return dao.insertFile(dto);
+	}
+	
 	
 //	infrCode
 

@@ -6,9 +6,12 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 
-<form id="form" method="post" action="/infra/code/codeGroupInst">
+<!-- <form id="form" method="post" action="/infra/code/codeGroupInst"> -->
+<form id="form" method="post" action="/infra/code/codeGroupInst" enctype="multipart/form-data">
 	<input type="text" name="ifcgName" placeholder="아이디">
 	<input type="hidden" name="shOption" value="<c:out value="${vo.shOption}"/>">
 	<input type="hidden" name="shValue" value="<c:out value="${vo.shValue}"/>">
 	<input type="submit" value="등록">
+	<input type="file" name="file" multiple>
+	<!-- <input type="file" name="file" > -->
 </form>

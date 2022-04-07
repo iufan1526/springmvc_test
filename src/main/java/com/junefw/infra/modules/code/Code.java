@@ -2,6 +2,8 @@ package com.junefw.infra.modules.code;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Code {
 	
 // DTO	
@@ -14,6 +16,11 @@ public class Code {
 	private String ifcdName;
 	private String ifcdDelNy;
 	private String infrCodeGroup_ifcgSeq;
+	private MultipartFile file;
+	private MultipartFile file2;
+	private String originalFileName;
+	private String uuidFileName;
+	
 	
 	
 	public static List<Code> cachedCodeArrayList;
@@ -68,6 +75,39 @@ public class Code {
 	public void setInfrCodeGroup_ifcgSeq(String infrCodeGroup_ifcgSeq) {
 		this.infrCodeGroup_ifcgSeq = infrCodeGroup_ifcgSeq;
 	}
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+	public static List<Code> getCachedCodeArrayList() {
+		return cachedCodeArrayList;
+	}
+	public static void setCachedCodeArrayList(List<Code> cachedCodeArrayList) {
+		Code.cachedCodeArrayList = cachedCodeArrayList;
+	}
+	public MultipartFile getFile2() {
+		return file2;
+	}
+	public void setFile2(MultipartFile file2) {
+		this.file2 = file2;
+	}
+	public String getOriginalFileName() {
+		return originalFileName;
+	}
+	public void setOriginalFileName(String originalFileName) {
+		this.originalFileName = originalFileName;
+	}
+	public String getUuidFileName() {
+		return uuidFileName;
+	}
+	public void setUuidFileName(String uuidFileName) {
+		this.uuidFileName = uuidFileName;
+	}
+	
+	
+	
 	
 	
 	

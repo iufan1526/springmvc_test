@@ -77,20 +77,38 @@
 			insert into infrCodeGroup(
 					
 				  ifcgName
+				  ,originalFileName
+				  ,uuidFileName
 				, ifcgDelNy		
 			)values(
 				#{ifcgName}
+				,#{originalFileName}
+				,#{uuidFileName}
 				,0
 			)
 			<selectKey resultType="Integer" keyProperty="ifcgSeq" order="AFTER">
 			SELECT last_insert_id()
 			</selectKey>	
 	</insert>
+	<!-- <insert id="insertFile">
+			insert into infrCodeGroup(	
+				  originalFileName
+				  ,uuidFileName
+				  , ifcgDelNy	
+				  ,ifcgSeq
+			)values(
+				#{originalFileName}
+				,#{uuidFileName}
+				,0
+				,#{ifcgSeq}
+			)
+	</insert> -->
 	
 	<select id="selectOne" resultMap="resultMapObj">
 			SELECT 
 				a.ifcgSeq
 				, a.ifcgName
+				, a.uuidFileName
 			FROM 
 				nct.infrCodeGroup a
 			WHERE 1=1
