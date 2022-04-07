@@ -21,12 +21,11 @@
 					<when test="shOption == 2">AND ifcgNameEng  LIKE concat('%', #{shValue} ,'%')</when>
 				</choose>
 				<if test="shIfcgName != null and !shIfcgName.equals('')">AND ifcgName LIKE concat('%', #{shIfcgName} ,'%')</if>
+				ORDER BY ifcgSeq DESC
     	
     </sql>
     
 	<!-- <include refid="selectCommon"> -->
-	
-	
 	
 	
 	
@@ -43,9 +42,19 @@
 				, a.ifcgName
 				, a.ifcgDelNy
 				, a.ifcgNameEng
-		<include refid="selectCommon"/>
-		limit #{startRnumForMysql},#{rowNumToShow}
-		
+			FROM 
+				nct.infrCodeGroup a
+			WHERE 1=1
+				<choose>
+					<when test="shIfcgDelNy == 1">AND ifcgDelNy = 1</when>
+					<when test="shIfcgDelNy == 0">AND ifcgDelNy = 0</when>
+				</choose>
+				<choose>
+					<when test="shOption == 1">AND ifcgName  LIKE concat('%', #{shValue} ,'%')</when>
+					<when test="shOption == 2">AND ifcgNameEng  LIKE concat('%', #{shValue} ,'%')</when>
+				</choose>
+				<if test="shIfcgName != null and !shIfcgName.equals('')">AND ifcgName LIKE concat('%', #{shIfcgName} ,'%')</if>
+				ORDER BY ifcgSeq DESC
 	</select>
 	
 	<select id="selectOneCount" resultType="Integer">
@@ -73,6 +82,9 @@
 				#{ifcgName}
 				,0
 			)
+			<selectKey resultType="Integer" keyProperty="ifcgSeq" order="AFTER">
+			SELECT last_insert_id()
+			</selectKey>	
 	</insert>
 	
 	<select id="selectOne" resultMap="resultMapObj">
@@ -91,6 +103,23 @@
 			WHERE 1=1
 				AND ifcgSeq= #{ifcgSeq}
 	</update>
+	
+	<delete id="delete">
+			DELETE FROM 
+				nct.infrCodeGroup 
+			WHERE 1=1
+				AND ifcgSeq= #{ifcgSeq}
+	</delete>
+	
+	<update id="updateDelete">
+			UPDATE nct.infrCodeGroup SET 
+				ifcgDelNy = 1
+			WHERE 1=1
+				AND ifcgSeq= #{ifcgSeq}
+	</update>
+	
+	
+	
 	
 	<!-- infrCode -->
 	
@@ -115,7 +144,9 @@
 				nct.infrCode a
 			WHERE 1=1
 				AND ifcdDelNy = 0
-				<if test="shIfcgSeq != null and !shIfcgSeq.equals('')">AND infrCodeGroup_ifcgSeq = #{shIfcgSeq} </if>
+				<!-- <if test="shIfcgSeq != null and !shIfcgSeq.equals('')">AND infrCodeGroup_ifcgSeq = #{shIfcgSeq} </if> -->
+				<if test="shCdValue != null and !shCdValue.equals('')">AND ifcdName LIKE concat('%', #{shCdValue} ,'%')</if>
+			Limit 0,10
 	</select>
 	
 	<insert id="codeInsert">
@@ -150,6 +181,14 @@
 				AND ifcdSeq= #{ifcdSeq}
 	</update>
 	
+	<select id="selectCache" resultMap="resultMapObj">
+			SELECT 
+				a.ifcdSeq
+				, a.ifcdName
+				, a.ifcdDelNy
+			FROM 
+				nct.infrCode a
+	</select>
 	
 	
 

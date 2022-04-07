@@ -16,6 +16,10 @@ public class CodeVo {
 	private String shOption;
 	private String shValue;
 	
+	
+	
+	private String shCdValue;
+	
 
 //	paging
 	private int thisPage = 1;									// 현재 페이지
@@ -449,6 +453,23 @@ public String getIfcgSeq() {
 
 	public void setStartRnumForMysql(int startRnumForMysql) {
 		this.startRnumForMysql = startRnumForMysql;
+	}
+	
+
+
+	public String getShCdValue() {
+		return shCdValue;
+	}
+
+
+
+
+
+
+
+
+	public void setShCdValue(String shCdValue) {
+		this.shCdValue = shCdValue;
 	}
 
 

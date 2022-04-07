@@ -1,5 +1,6 @@
 package com.junefw.infra.modules.code;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -28,6 +29,10 @@ public class CodeDao {
 	
 	public int update(Code dto) {return sqlSession.update(namespace+".update", dto);}
 	
+	public int delete(CodeVo vo) {return sqlSession.delete(namespace+".delete", vo);}
+	
+	public int updateDelete(CodeVo vo) {return sqlSession.update(namespace+".updateDelete", vo);}
+	
 // infrCode
 	public int selectCodeListCount(CodeVo vo) {return sqlSession.selectOne(namespace + ".selectCodeListCount", vo);}
 	
@@ -38,5 +43,8 @@ public class CodeDao {
 	public Code selectOneCode(CodeVo vo) {return sqlSession.selectOne(namespace + ".selectOneCode", vo);}
 	
 	public int updateCode(Code dto) {return sqlSession.update(namespace+".updateCode", dto);}
+	
+	
+	public List<Code> selectCache(){ return sqlSession.selectList(namespace+ ".selectCache","");}
 	
 }

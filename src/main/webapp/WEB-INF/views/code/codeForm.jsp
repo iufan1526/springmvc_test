@@ -12,7 +12,47 @@
 		<option value="<c:out value="${item.ifcgSeq}"/>"><c:out value="${item.ifcgName}"/></option>
 		</c:forEach>
 	</select>
+	<input tpye="hidden" name="ckNy" id="ckNy" value="0">
+	동의합니다<input type="checkbox" name="ck" id="ck" value="">
 	
 	<input type="text" name="ifcdName" placeholder="이름" value="">
-	<input type="submit" value="입력">
+	<input type="submit" name="btn" id="btn" value="입력">
 </form>
+
+
+
+
+
+
+
+
+
+<script src="/infra/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
+
+
+
+<script type="text/javascript">
+	$("#btn").on("click" function(){
+		if(seq.val() == 0""){
+			
+			if(validationInst() == false) return false;
+			setCheckboxValue($("#ck"),$("#ckNy"));
+			form.attr("action", "goUrlInst").submit();
+			
+		}else {
+			
+			if(validationUpdt() == false) return false;
+			form.attr("action", "goUrlInst").submit();
+		}	
+	});
+	
+	setCheckboxValue = function(obj,targetObj){
+		if(obj.is("chackd")){
+			targetObj.val("1");
+		}
+		}else {
+			targetObj.val("0");
+		}
+		
+	}
+</script>

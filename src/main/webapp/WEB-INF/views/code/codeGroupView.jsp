@@ -6,4 +6,40 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 <c:out value="${rt.ifcdSeq}"/> | <c:out value="${rt.ifcgName}"/> | <c:out value="${rt.ifcgDelNy}"/> <br>
-<a href="/infra/code/codeGroupForm2?ifcgSeq=${rt.ifcgSeq}">수정</a>
+<a href="/infra/code/codeGroupForm2?ifcgSeq=${rt.ifcgSeq}&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>">수정</a>
+<a href="/infra/code/codeGroupList?shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>">목록</a>
+<a href="/infra/code/codeGroupDele?ifcgSeq=<c:out value="${rt.ifcgSeq}"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>"id="btnSubmit">삭제</a>
+<a href="/infra/code/codeGroupNele?ifcgSeq=<c:out value="${rt.ifcgSeq}"/>">(가)삭제</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+	$("#btnSubmit").on("click",function(){
+		
+		var rt = confirm("삭제하시겠습니까?");
+		
+		if(rt){
+			
+		}else{
+			
+			return false;
+		}
+	
+	});
+	
+
+</script>

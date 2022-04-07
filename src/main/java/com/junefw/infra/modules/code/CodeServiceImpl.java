@@ -1,6 +1,9 @@
 package com.junefw.infra.modules.code;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +41,15 @@ public class CodeServiceImpl implements CodeService{
 		return dao.update(dto);
 	}
 	
+	@Override
+	public int delete(CodeVo vo) throws Exception {
+		return dao.delete(vo);
+	}
+	@Override
+	public int updateDelete(CodeVo vo) throws Exception {
+		return dao.updateDelete(vo);
+	}
+	
 	
 //	infrCode
 
@@ -65,6 +77,15 @@ public class CodeServiceImpl implements CodeService{
 		return dao.selectCodeListCount(vo);
 	}
 	
+//	@PostConstruct
+//	public void selectCache() {
+//		 List<Code> codeListFromDb = dao.selectCache();
+//		 
+//		 Code.cachedCodeArrayList.clear();
+//		 Code.cachedCodeArrayList.addAll(codeListFromDb);
+//		 System.out.println("총갯수: " + Code.cachedCodeArrayList.size() + "개 정상적으로 메모리에 저장되었습니다");
+//	}
+//	
 
 	
 	

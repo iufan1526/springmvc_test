@@ -1,5 +1,7 @@
 package com.junefw.infra.modules.code;
 
+import java.util.List;
+
 public class Code {
 	
 // DTO	
@@ -10,8 +12,11 @@ public class Code {
 	
 	private String ifcdSeq;
 	private String ifcdName;
-	private Integer ifcdDelNy;
-	private Integer infrCodeGroup_ifcgSeq;
+	private String ifcdDelNy;
+	private String infrCodeGroup_ifcgSeq;
+	
+	
+	public static List<Code> cachedCodeArrayList;
 	
 	
 	
@@ -51,16 +56,16 @@ public class Code {
 	public void setIfcdName(String ifcdName) {
 		this.ifcdName = ifcdName;
 	}
-	public Integer getIfcdDelNy() {
+	public String getIfcdDelNy() {
 		return ifcdDelNy;
 	}
-	public void setIfcdDelNy(Integer ifcdDelNy) {
+	public void setIfcdDelNy(String ifcdDelNy) {
 		this.ifcdDelNy = ifcdDelNy;
 	}
-	public Integer getInfrCodeGroup_ifcgSeq() {
+	public String getInfrCodeGroup_ifcgSeq() {
 		return infrCodeGroup_ifcgSeq;
 	}
-	public void setInfrCodeGroup_ifcgSeq(Integer infrCodeGroup_ifcgSeq) {
+	public void setInfrCodeGroup_ifcgSeq(String infrCodeGroup_ifcgSeq) {
 		this.infrCodeGroup_ifcgSeq = infrCodeGroup_ifcgSeq;
 	}
 	
