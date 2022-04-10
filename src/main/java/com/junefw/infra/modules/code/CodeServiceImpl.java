@@ -82,17 +82,5 @@ public class CodeServiceImpl implements CodeService{
 		return dao.selectCodeListCount(vo);
 	}
 	
-//	@PostConstruct
-//	public void selectCache() {
-//		 List<Code> codeListFromDb = dao.selectCache();
-//		 
-//		 Code.cachedCodeArrayList.clear();
-//		 Code.cachedCodeArrayList.addAll(codeListFromDb);
-//		 System.out.println("총갯수: " + Code.cachedCodeArrayList.size() + "개 정상적으로 메모리에 저장되었습니다");
-//	}
-//	
-
-	
-	
 	
 }

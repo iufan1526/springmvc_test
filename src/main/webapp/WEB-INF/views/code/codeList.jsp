@@ -6,10 +6,14 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
+<<<<<<< HEAD
 <form id="form" name="form" method="post" action="/infra/code/codeList">
 <input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 <input type="hidden" id="ifcdSeq" name="ifcdSeq">
 검색<input type="text" id="shCdValue" name="shCdValue" value="<c:out value="${vo.shCdValue}"/>">
+=======
+<form id="" name="" method="get" action="/infra/code/codeList">
+>>>>>>> branch 'main' of https://github.com/iufan1526/springmvc_test.git
 <select name="shIfcgSeq">
 	<option value="">@코드그룹@
 	<c:forEach items="${list}" var="item" varStatus="status">		
@@ -34,6 +38,7 @@
 	</c:otherwise> 
 </c:choose>	 
 
+<<<<<<< HEAD
 
 
 <nav aria-label="...">
@@ -84,3 +89,27 @@
 		
 	}
 </script>
+=======
+</form>
+
+<nav aria-label="...">
+  <ul class="pagination">
+    <c:if test="${vo.startPage gt vo.pageNumToShow}">
+                <li class="page-item"><a class="page-link" href="/infra/code/codeGroupList?thisPage=${vo.startPage - 1}">Previous</a></li>
+</c:if>
+<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
+	<c:choose>
+		<c:when test="${i.index eq vo.thisPage}">
+                <li class="page-item active"><a class="page-link" href="/infra/code/codeGroupList?thisPage=${i.index}">${i.index}</a></li>
+		</c:when>
+		<c:otherwise>             
+                <li class="page-item"><a class="page-link" href="/infra/code/codeGroupList?thisPage=${i.index}">${i.index}</a></li>
+		</c:otherwise>
+	</c:choose>
+</c:forEach>     
+<c:if test="${vo.endPage ne vo.totalPages}">                
+                <li class="page-item"><a class="page-link" href="/infra/code/codeGroupList?thisPage=${vo.endPage + 1}">Next</a></li>
+</c:if>  
+  </ul>
+</nav>
+>>>>>>> branch 'main' of https://github.com/iufan1526/springmvc_test.git
