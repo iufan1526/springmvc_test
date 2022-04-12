@@ -72,6 +72,7 @@ public class CodeController {
 		String uuid = UUID.randomUUID().toString();
 		String uuidFileName = uuid + "." + ext;
 		multipartFile.transferTo(new File("/Users/admin/Desktop/Fectory/ws_sts3/springmvc_test/src/main/webapp/resources/"+ uuidFileName));
+		
 		// 입력을 작동시킨다.
 		dto.setOriginalFileName(fileName);
 		dto.setUuidFileName(uuidFileName);
